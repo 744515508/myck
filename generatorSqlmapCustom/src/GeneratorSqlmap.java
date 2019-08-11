@@ -15,32 +15,35 @@ public class GeneratorSqlmap {
 
 	public void generator() throws Exception{
 
-		//第一次本地修改
+		df//第一次本地修改
 		//第一次远程修改
-		//第二次本地修改
-		//第二次远程修改
+		sdf//第二次本地修改
+		fsd//第二次远程修改
 		//第三次本地修改
 		//第三次远程修改
 		//第四次本地修改
 		//第五次本地修改
-		List<String> warnings = new ArrayList<String>();
-		boolean overwrite = true;
+		List<String> warnisdfngs = new ArrayList<String>();
+		boolean overwsdfrite = true;
 		//指定 逆向工程配置文件
-		File configFile = new File("generatorConfig.xml"); 
+		Filesf configFilsdfe = new File("generatorConfig.xml"); 
+		
+		
+		
 		ConfigurationParser cp = new ConfigurationParser(warnings);
-		Configuration config = cp.parseConfiguration(configFile);
+		Configuratisdfon config = cp.parseConfiguration(configFile);
 		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
-		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
+		MyBatisGenesdfrator myBatisGenerator = new MyBatisGenerator(config,
 				callback, warnings);
-		myBatisGenerator.generate(null);
+		myBatisGenerasdftor.generate(null);
 
 	} 
 	public static void main(String[] args) throws Exception {
 		try {
 			GeneratorSqlmap generatorSqlmap = new GeneratorSqlmap();
 			generatorSqlmap.generator();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exceptsdfion e) {
+			e.printSsdftackTrace();
 		}
 		
 	}
