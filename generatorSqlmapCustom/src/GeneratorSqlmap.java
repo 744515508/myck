@@ -14,7 +14,7 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 public class GeneratorSqlmap {
 
 	public void generator() throws Exception{
-
+		//第一次修改远程
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		//指定 逆向工程配置文件
