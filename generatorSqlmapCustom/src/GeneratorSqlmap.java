@@ -23,11 +23,11 @@ public class GeneratorSqlmap {
 		//第三次远程修改
 		//第四次本地修改
 		//第五次本地修改
+		//第六次地修改
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		//指定 逆向工程配置文件
 		File configFile = new File("generatorConfig.xml"); 
-		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(configFile);
 		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
 		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
