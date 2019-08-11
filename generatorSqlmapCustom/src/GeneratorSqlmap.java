@@ -14,8 +14,13 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 public class GeneratorSqlmap {
 
 	public void generator() throws Exception{
+
+		//第一次本地修改
+		//第一次远程修改
 		//第二次本地修改
 		//第二次远程修改
+		//第三次本地修改
+		//第三次远程修改
 		//第四次本地修改
 		//第五次本地修改
 		//第六次本地修改
