@@ -27,6 +27,7 @@ public class GeneratorSqlmap {
 		//第七次本地修改
 		//第八次本地修改
 		//第八次远程修改
+		//第九次远程修改
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		//指定 逆向工程配置文件
