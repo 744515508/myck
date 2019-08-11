@@ -18,6 +18,19 @@ public class User {
      */
     private String account;
 
+    
+    asdasds
+    asdasd
+    public void setAsdasd(asdasds asdasd) {
+		this.asdasd = asdasd;
+	}
+    private void asd() {
+		// TODO Auto-generated method stub
+
+	}
+    asdsadasd
+    asd
+    
     /**
      * 用户密码
      */
