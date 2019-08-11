@@ -1,13 +1,14 @@
 package com.pojo;
 
 import java.util.Date;
-dfgdfgfddfgdg d
+
 public class User {
     /**
-     * 主键dfgd f
+     * 主键
      */
     private Long id;
 
+    //第一次修改
     /**
      * 所属商户
      */
@@ -21,8 +22,8 @@ public class User {
     /**
      * 用户密码
      */
-    private Stridfg dfng pwd;
-dfg df
+    private String pwd;
+
     /**
      * 盐
      */
@@ -56,7 +57,7 @@ dfg df
     /**
      * 更改密码时间
      */
-    private Datedf gdf modifedPwdTime;
+    private Date modifedPwdTime;
 
     /**
      * 字符扩展字段1
@@ -72,7 +73,7 @@ dfg df
      * 数字扩展字段1
      */
     private Long fldN1;
- dfg 
+
     /**
      * 数字扩展字段2
      */
@@ -94,7 +95,7 @@ dfg df
     private Long createUserId;
 
     /**
-     * 创建用户d g名称
+     * 创建用户名称
      */
     private String createUserName;
 
@@ -117,7 +118,7 @@ dfg df
      * 更新时间
      */
     private Date modifedTime;
-d g
+
     /**
      * 主键
      * @return id 主键
@@ -140,7 +141,7 @@ d g
      */
     public String getMchNo() {
         return mchNo;
-    } dfg
+    }
 
     /**
      * 所属商户
@@ -167,7 +168,7 @@ d g
     }
 
     /**
-     * 用户密码d g
+     * 用户密码
      * @return pwd 用户密码
      */
     public String getPwd() {
@@ -300,7 +301,7 @@ d g
      */
     public String getFldS1() {
         return fldS1;
-    } dg
+    }
 
     /**
      * 字符扩展字段1
@@ -396,7 +397,7 @@ d g
      */
     public Long getCreateUserId() {
         return createUserId;
-    } gdf
+    }
 
     /**
      * 创建用户id
