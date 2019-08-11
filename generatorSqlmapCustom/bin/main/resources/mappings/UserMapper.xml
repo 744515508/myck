@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mch_no" jdbcType="VARCHAR" property="mchNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="status_msg" jdbcType="VARCHAR" property="statusMsg" />
+    <result column="modify_pwd" jdbcType="TINYINT" property="modifyPwd" />
+    <result column="modifed_pwd_time" jdbcType="TIMESTAMP" property="modifedPwdTime" />
+    <result column="fld_s1" jdbcType="VARCHAR" property="fldS1" />
+    <result column="fld_s2" jdbcType="VARCHAR" property="fldS2" />
+    <result column="fld_n1" jdbcType="BIGINT" property="fldN1" />
+    <result column="fld_n2" jdbcType="BIGINT" property="fldN2" />
+    <result column="fld_d2" jdbcType="TIMESTAMP" property="fldD2" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="modifed_user_id" jdbcType="BIGINT" property="modifedUserId" />
+    <result column="modifed_user_name" jdbcType="VARCHAR" property="modifedUserName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mch_no, account, pwd, salt, telphone, email, status, status_msg, modify_pwd, 
+    modifed_pwd_time, fld_s1, fld_s2, fld_n1, fld_n2, fld_d2, is_deleted, create_user_id, 
+    create_user_name, modifed_user_id, modifed_user_name, create_time, modifed_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.User">
+    insert into auth_user (id, mch_no, account, 
+      pwd, salt, telphone, 
+      email, status, status_msg, 
+      modify_pwd, modifed_pwd_time, fld_s1, 
+      fld_s2, fld_n1, fld_n2, 
+      fld_d2, is_deleted, create_user_id, 
+      create_user_name, modifed_user_id, modifed_user_name, 
+      create_time, modifed_time)
+    values (#{id,jdbcType=BIGINT}, #{mchNo,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{statusMsg,jdbcType=VARCHAR}, 
+      #{modifyPwd,jdbcType=TINYINT}, #{modifedPwdTime,jdbcType=TIMESTAMP}, #{fldS1,jdbcType=VARCHAR}, 
+      #{fldS2,jdbcType=VARCHAR}, #{fldN1,jdbcType=BIGINT}, #{fldN2,jdbcType=BIGINT}, 
+      #{fldD2,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{modifedUserId,jdbcType=BIGINT}, #{modifedUserName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.User">
+    insert into auth_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mchNo != null">
+        mch_no,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusMsg != null">
+        status_msg,
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd,
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time,
+      </if>
+      <if test="fldS1 != null">
+        fld_s1,
+      </if>
+      <if test="fldS2 != null">
+        fld_s2,
+      </if>
+      <if test="fldN1 != null">
+        fld_n1,
+      </if>
+      <if test="fldN2 != null">
+        fld_n2,
+      </if>
+      <if test="fldD2 != null">
+        fld_d2,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id,
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifedTime != null">
+        modifed_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mchNo != null">
+        #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.User">
+    update auth_user
+    <set>
+      <if test="mchNo != null">
+        mch_no = #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        status_msg = #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        fld_n1 = #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        fld_n2 = #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        modifed_time = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.User">
+    update auth_user
+    set mch_no = #{mchNo,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      fld_n1 = #{fldN1,jdbcType=BIGINT},
+      fld_n2 = #{fldN2,jdbcType=BIGINT},
+      fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifed_time = #{modifedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mch_no" jdbcType="VARCHAR" property="mchNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="status_msg" jdbcType="VARCHAR" property="statusMsg" />
+    <result column="modify_pwd" jdbcType="TINYINT" property="modifyPwd" />
+    <result column="modifed_pwd_time" jdbcType="TIMESTAMP" property="modifedPwdTime" />
+    <result column="fld_s1" jdbcType="VARCHAR" property="fldS1" />
+    <result column="fld_s2" jdbcType="VARCHAR" property="fldS2" />
+    <result column="fld_n1" jdbcType="BIGINT" property="fldN1" />
+    <result column="fld_n2" jdbcType="BIGINT" property="fldN2" />
+    <result column="fld_d2" jdbcType="TIMESTAMP" property="fldD2" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="modifed_user_id" jdbcType="BIGINT" property="modifedUserId" />
+    <result column="modifed_user_name" jdbcType="VARCHAR" property="modifedUserName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mch_no, account, pwd, salt, telphone, email, status, status_msg, modify_pwd, 
+    modifed_pwd_time, fld_s1, fld_s2, fld_n1, fld_n2, fld_d2, is_deleted, create_user_id, 
+    create_user_name, modifed_user_id, modifed_user_name, create_time, modifed_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.User">
+    insert into auth_user (id, mch_no, account, 
+      pwd, salt, telphone, 
+      email, status, status_msg, 
+      modify_pwd, modifed_pwd_time, fld_s1, 
+      fld_s2, fld_n1, fld_n2, 
+      fld_d2, is_deleted, create_user_id, 
+      create_user_name, modifed_user_id, modifed_user_name, 
+      create_time, modifed_time)
+    values (#{id,jdbcType=BIGINT}, #{mchNo,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{statusMsg,jdbcType=VARCHAR}, 
+      #{modifyPwd,jdbcType=TINYINT}, #{modifedPwdTime,jdbcType=TIMESTAMP}, #{fldS1,jdbcType=VARCHAR}, 
+      #{fldS2,jdbcType=VARCHAR}, #{fldN1,jdbcType=BIGINT}, #{fldN2,jdbcType=BIGINT}, 
+      #{fldD2,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{modifedUserId,jdbcType=BIGINT}, #{modifedUserName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.User">
+    insert into auth_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mchNo != null">
+        mch_no,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusMsg != null">
+        status_msg,
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd,
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time,
+      </if>
+      <if test="fldS1 != null">
+        fld_s1,
+      </if>
+      <if test="fldS2 != null">
+        fld_s2,
+      </if>
+      <if test="fldN1 != null">
+        fld_n1,
+      </if>
+      <if test="fldN2 != null">
+        fld_n2,
+      </if>
+      <if test="fldD2 != null">
+        fld_d2,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id,
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifedTime != null">
+        modifed_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mchNo != null">
+        #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.User">
+    update auth_user
+    <set>
+      <if test="mchNo != null">
+        mch_no = #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        status_msg = #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        fld_n1 = #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        fld_n2 = #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        modifed_time = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.User">
+    update auth_user
+    set mch_no = #{mchNo,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      fld_n1 = #{fldN1,jdbcType=BIGINT},
+      fld_n2 = #{fldN2,jdbcType=BIGINT},
+      fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifed_time = #{modifedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mch_no" jdbcType="VARCHAR" property="mchNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="status_msg" jdbcType="VARCHAR" property="statusMsg" />
+    <result column="modify_pwd" jdbcType="TINYINT" property="modifyPwd" />
+    <result column="modifed_pwd_time" jdbcType="TIMESTAMP" property="modifedPwdTime" />
+    <result column="fld_s1" jdbcType="VARCHAR" property="fldS1" />
+    <result column="fld_s2" jdbcType="VARCHAR" property="fldS2" />
+    <result column="fld_n1" jdbcType="BIGINT" property="fldN1" />
+    <result column="fld_n2" jdbcType="BIGINT" property="fldN2" />
+    <result column="fld_d2" jdbcType="TIMESTAMP" property="fldD2" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="modifed_user_id" jdbcType="BIGINT" property="modifedUserId" />
+    <result column="modifed_user_name" jdbcType="VARCHAR" property="modifedUserName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mch_no, account, pwd, salt, telphone, email, status, status_msg, modify_pwd, 
+    modifed_pwd_time, fld_s1, fld_s2, fld_n1, fld_n2, fld_d2, is_deleted, create_user_id, 
+    create_user_name, modifed_user_id, modifed_user_name, create_time, modifed_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.User">
+    insert into auth_user (id, mch_no, account, 
+      pwd, salt, telphone, 
+      email, status, status_msg, 
+      modify_pwd, modifed_pwd_time, fld_s1, 
+      fld_s2, fld_n1, fld_n2, 
+      fld_d2, is_deleted, create_user_id, 
+      create_user_name, modifed_user_id, modifed_user_name, 
+      create_time, modifed_time)
+    values (#{id,jdbcType=BIGINT}, #{mchNo,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{statusMsg,jdbcType=VARCHAR}, 
+      #{modifyPwd,jdbcType=TINYINT}, #{modifedPwdTime,jdbcType=TIMESTAMP}, #{fldS1,jdbcType=VARCHAR}, 
+      #{fldS2,jdbcType=VARCHAR}, #{fldN1,jdbcType=BIGINT}, #{fldN2,jdbcType=BIGINT}, 
+      #{fldD2,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{modifedUserId,jdbcType=BIGINT}, #{modifedUserName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.User">
+    insert into auth_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mchNo != null">
+        mch_no,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusMsg != null">
+        status_msg,
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd,
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time,
+      </if>
+      <if test="fldS1 != null">
+        fld_s1,
+      </if>
+      <if test="fldS2 != null">
+        fld_s2,
+      </if>
+      <if test="fldN1 != null">
+        fld_n1,
+      </if>
+      <if test="fldN2 != null">
+        fld_n2,
+      </if>
+      <if test="fldD2 != null">
+        fld_d2,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id,
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifedTime != null">
+        modifed_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mchNo != null">
+        #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.User">
+    update auth_user
+    <set>
+      <if test="mchNo != null">
+        mch_no = #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        status_msg = #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        fld_n1 = #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        fld_n2 = #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        modifed_time = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.User">
+    update auth_user
+    set mch_no = #{mchNo,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      fld_n1 = #{fldN1,jdbcType=BIGINT},
+      fld_n2 = #{fldN2,jdbcType=BIGINT},
+      fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifed_time = #{modifedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mch_no" jdbcType="VARCHAR" property="mchNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="status_msg" jdbcType="VARCHAR" property="statusMsg" />
+    <result column="modify_pwd" jdbcType="TINYINT" property="modifyPwd" />
+    <result column="modifed_pwd_time" jdbcType="TIMESTAMP" property="modifedPwdTime" />
+    <result column="fld_s1" jdbcType="VARCHAR" property="fldS1" />
+    <result column="fld_s2" jdbcType="VARCHAR" property="fldS2" />
+    <result column="fld_n1" jdbcType="BIGINT" property="fldN1" />
+    <result column="fld_n2" jdbcType="BIGINT" property="fldN2" />
+    <result column="fld_d2" jdbcType="TIMESTAMP" property="fldD2" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="modifed_user_id" jdbcType="BIGINT" property="modifedUserId" />
+    <result column="modifed_user_name" jdbcType="VARCHAR" property="modifedUserName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mch_no, account, pwd, salt, telphone, email, status, status_msg, modify_pwd, 
+    modifed_pwd_time, fld_s1, fld_s2, fld_n1, fld_n2, fld_d2, is_deleted, create_user_id, 
+    create_user_name, modifed_user_id, modifed_user_name, create_time, modifed_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.User">
+    insert into auth_user (id, mch_no, account, 
+      pwd, salt, telphone, 
+      email, status, status_msg, 
+      modify_pwd, modifed_pwd_time, fld_s1, 
+      fld_s2, fld_n1, fld_n2, 
+      fld_d2, is_deleted, create_user_id, 
+      create_user_name, modifed_user_id, modifed_user_name, 
+      create_time, modifed_time)
+    values (#{id,jdbcType=BIGINT}, #{mchNo,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{statusMsg,jdbcType=VARCHAR}, 
+      #{modifyPwd,jdbcType=TINYINT}, #{modifedPwdTime,jdbcType=TIMESTAMP}, #{fldS1,jdbcType=VARCHAR}, 
+      #{fldS2,jdbcType=VARCHAR}, #{fldN1,jdbcType=BIGINT}, #{fldN2,jdbcType=BIGINT}, 
+      #{fldD2,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{modifedUserId,jdbcType=BIGINT}, #{modifedUserName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.User">
+    insert into auth_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mchNo != null">
+        mch_no,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusMsg != null">
+        status_msg,
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd,
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time,
+      </if>
+      <if test="fldS1 != null">
+        fld_s1,
+      </if>
+      <if test="fldS2 != null">
+        fld_s2,
+      </if>
+      <if test="fldN1 != null">
+        fld_n1,
+      </if>
+      <if test="fldN2 != null">
+        fld_n2,
+      </if>
+      <if test="fldD2 != null">
+        fld_d2,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id,
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifedTime != null">
+        modifed_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mchNo != null">
+        #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.User">
+    update auth_user
+    <set>
+      <if test="mchNo != null">
+        mch_no = #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        status_msg = #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        fld_n1 = #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        fld_n2 = #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        modifed_time = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.User">
+    update auth_user
+    set mch_no = #{mchNo,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      fld_n1 = #{fldN1,jdbcType=BIGINT},
+      fld_n2 = #{fldN2,jdbcType=BIGINT},
+      fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifed_time = #{modifedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mch_no" jdbcType="VARCHAR" property="mchNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="status_msg" jdbcType="VARCHAR" property="statusMsg" />
+    <result column="modify_pwd" jdbcType="TINYINT" property="modifyPwd" />
+    <result column="modifed_pwd_time" jdbcType="TIMESTAMP" property="modifedPwdTime" />
+    <result column="fld_s1" jdbcType="VARCHAR" property="fldS1" />
+    <result column="fld_s2" jdbcType="VARCHAR" property="fldS2" />
+    <result column="fld_n1" jdbcType="BIGINT" property="fldN1" />
+    <result column="fld_n2" jdbcType="BIGINT" property="fldN2" />
+    <result column="fld_d2" jdbcType="TIMESTAMP" property="fldD2" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="modifed_user_id" jdbcType="BIGINT" property="modifedUserId" />
+    <result column="modifed_user_name" jdbcType="VARCHAR" property="modifedUserName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mch_no, account, pwd, salt, telphone, email, status, status_msg, modify_pwd, 
+    modifed_pwd_time, fld_s1, fld_s2, fld_n1, fld_n2, fld_d2, is_deleted, create_user_id, 
+    create_user_name, modifed_user_id, modifed_user_name, create_time, modifed_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from auth_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.User">
+    insert into auth_user (id, mch_no, account, 
+      pwd, salt, telphone, 
+      email, status, status_msg, 
+      modify_pwd, modifed_pwd_time, fld_s1, 
+      fld_s2, fld_n1, fld_n2, 
+      fld_d2, is_deleted, create_user_id, 
+      create_user_name, modifed_user_id, modifed_user_name, 
+      create_time, modifed_time)
+    values (#{id,jdbcType=BIGINT}, #{mchNo,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{statusMsg,jdbcType=VARCHAR}, 
+      #{modifyPwd,jdbcType=TINYINT}, #{modifedPwdTime,jdbcType=TIMESTAMP}, #{fldS1,jdbcType=VARCHAR}, 
+      #{fldS2,jdbcType=VARCHAR}, #{fldN1,jdbcType=BIGINT}, #{fldN2,jdbcType=BIGINT}, 
+      #{fldD2,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{modifedUserId,jdbcType=BIGINT}, #{modifedUserName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.User">
+    insert into auth_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mchNo != null">
+        mch_no,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusMsg != null">
+        status_msg,
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd,
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time,
+      </if>
+      <if test="fldS1 != null">
+        fld_s1,
+      </if>
+      <if test="fldS2 != null">
+        fld_s2,
+      </if>
+      <if test="fldN1 != null">
+        fld_n1,
+      </if>
+      <if test="fldN2 != null">
+        fld_n2,
+      </if>
+      <if test="fldD2 != null">
+        fld_d2,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id,
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifedTime != null">
+        modifed_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mchNo != null">
+        #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.User">
+    update auth_user
+    <set>
+      <if test="mchNo != null">
+        mch_no = #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="statusMsg != null">
+        status_msg = #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPwd != null">
+        modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      </if>
+      <if test="modifedPwdTime != null">
+        modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fldS1 != null">
+        fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      </if>
+      <if test="fldS2 != null">
+        fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      </if>
+      <if test="fldN1 != null">
+        fld_n1 = #{fldN1,jdbcType=BIGINT},
+      </if>
+      <if test="fldN2 != null">
+        fld_n2 = #{fldN2,jdbcType=BIGINT},
+      </if>
+      <if test="fldD2 != null">
+        fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifedUserId != null">
+        modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifedUserName != null">
+        modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null">
+        modifed_time = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.User">
+    update auth_user
+    set mch_no = #{mchNo,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      modify_pwd = #{modifyPwd,jdbcType=TINYINT},
+      modifed_pwd_time = #{modifedPwdTime,jdbcType=TIMESTAMP},
+      fld_s1 = #{fldS1,jdbcType=VARCHAR},
+      fld_s2 = #{fldS2,jdbcType=VARCHAR},
+      fld_n1 = #{fldN1,jdbcType=BIGINT},
+      fld_n2 = #{fldN2,jdbcType=BIGINT},
+      fld_d2 = #{fldD2,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      modifed_user_id = #{modifedUserId,jdbcType=BIGINT},
+      modifed_user_name = #{modifedUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifed_time = #{modifedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
