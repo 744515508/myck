@@ -27,6 +27,7 @@ import org.mybatis.generator.config.PropertyRegistry;
  * @作者：niexiaohui @创建时间：2016年11月22日 @修改记录：
  */
 public class MyCommentGenerator implements CommentGenerator {
+	//第十次远程修改
 	private Properties properties;
 	private Properties systemPro;
 	private boolean suppressDate;
